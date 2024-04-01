@@ -42,6 +42,8 @@
 ![image](https://github.com/PURE281/my_dream/assets/93171238/f624cd71-5779-47f1-9b8f-4dbda05195c3)
 3. 运行该脚本 python /root/demo/download_mini.py 
 4. 然后等待下载执行完成，在root/models文件夹下即可查看到下载的模型文件
+![image](https://github.com/PURE281/my_dream/assets/93171238/968131b0-8204-4fdb-8814-597d5046f1cd)
+由于下的模型比较大，就不等到下载完了....
 
 ### 实践3 通过 InternLM2-Chat-7B 运行 Lagent 智能体 Demo
 ![image](https://github.com/PURE281/my_dream/assets/93171238/0ecb9ac1-fa02-42dd-a7d0-376622d325c1)
