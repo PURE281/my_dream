@@ -44,4 +44,13 @@
 
 ### 实践4 实践部署 浦语·灵笔2 模型
 #### 图文创作
+1. ![image](https://github.com/PURE281/my_dream/assets/93171238/ab68f228-5aad-43fc-bb28-f6507d31bde1)
+2. ![image](https://github.com/PURE281/my_dream/assets/93171238/94ca8027-f14e-44d0-9dde-cc176b2f5570)
+3. ![image](https://github.com/PURE281/my_dream/assets/93171238/d9d7200b-6dfb-43f0-9121-760ec9ba45db)
+4. ![image](https://github.com/PURE281/my_dream/assets/93171238/13a34e0e-c494-464d-8a46-467a35a3e220)
+5. ![image](https://github.com/PURE281/my_dream/assets/93171238/680d7b7d-c425-47c7-ae88-5249b44032d2)
+
+
+
+
 #### 视觉问答
