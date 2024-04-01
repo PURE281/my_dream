@@ -7,7 +7,9 @@
 2. 通过git下载需要运行的项目代码
 3. 通过py脚本运行项目所需的模型资源
 4. 通过命令行运行项目
+
 新学的内容是可以通过本地ssh和服务器（internstudio）连接的方式在本地通过localhost的方式访问服务器上的项目 不过具体是怎么实现的还不太清楚
+
 ### 基础作业
 1. 在`internstudio`创建开发机
 ![image](https://github.com/PURE281/my_dream/assets/93171238/606ae254-9de7-442c-b07c-47f3b5575272)
