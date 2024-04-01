@@ -7,4 +7,21 @@
 4. 运行初demo
 ![image](https://github.com/PURE281/my_dream/assets/93171238/0fd4391e-0c6e-4483-8a10-576beec57c45)
 
-### 优秀作业
+### 优秀作业-八戒
+1. 在上一个作业中点击exit 退出demo
+2. 通过命令重新激活demo conda activate demo
+3. 通过git 下载八戒项目 然后通过命令行下载八戒项目所需模型
+4. 通过命令行运行项目
+![image](https://github.com/PURE281/my_dream/assets/93171238/02853302-56ca-4087-8f8d-66508cef9118)
+6. 本地电脑通过powershell 输入命令行 链接项目
+7. 通过浏览器输入localhost:127.0.0.1:6006 等待响应即可
+8. 开启对话
+![image](https://github.com/PURE281/my_dream/assets/93171238/2c531c26-e3f3-4ac6-8a6a-726ed76a5bf0)
+
+
+遇到的两个问题
+1. 通过 `streamlit run /root/Tutorial/helloworld/bajie_chat.py --server.address 127.0.0.1 --server.port 6006` 运行提示异常
+![image](https://github.com/PURE281/my_dream/assets/93171238/4b0e4813-c151-4228-82f2-4b49f24422d9)
+原因可能是先在本地powershell和interstudio进行了链接，将本地powershell关闭后重新输入上方命令行运行成功
+2. 通过本地powershell和internstudio进行链接，提示permission denied 字样
+原因：密码粘贴时出了问题，可通过ctrl+insert 或 ctrl+v输入，然后直接回车即可
