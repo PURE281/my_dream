@@ -36,6 +36,12 @@
 2. 通过本地powershell和internstudio进行链接，提示permission denied 字样
 原因：密码粘贴时出了问题，可通过ctrl+insert 或 ctrl+v输入，然后直接回车即可
 
-### 实践3 通过 InternLM2-Chat-7B 运行 Lagent 智能体 Demo
-### 实践4 实践部署 浦语·灵笔2 模型
+### 实践3 熟悉huggingface下载功能 使用 `huggingface_hub` python包,下载`InternLm-Chat-7b`的`config.json`文件到本地
 
+
+### 实践3 通过 InternLM2-Chat-7B 运行 Lagent 智能体 Demo
+![image](https://github.com/PURE281/my_dream/assets/93171238/0ecb9ac1-fa02-42dd-a7d0-376622d325c1)
+
+### 实践4 实践部署 浦语·灵笔2 模型
+#### 图文创作
+#### 视觉问答
