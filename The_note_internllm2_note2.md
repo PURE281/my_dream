@@ -37,7 +37,11 @@
 原因：密码粘贴时出了问题，可通过ctrl+insert 或 ctrl+v输入，然后直接回车即可
 
 ### 实践3 熟悉huggingface下载功能 使用 `huggingface_hub` python包,下载`InternLm-Chat-7b`的`config.json`文件到本地
-
+1. 在conda activate demo下 执行 pip install huggingface-hub
+2. 修改demo中的`download_mini.py`脚本，保存
+![image](https://github.com/PURE281/my_dream/assets/93171238/f624cd71-5779-47f1-9b8f-4dbda05195c3)
+3. 运行该脚本 python /root/demo/download_mini.py 
+4. 然后等待下载执行完成，在root/models文件夹下即可查看到下载的模型文件
 
 ### 实践3 通过 InternLM2-Chat-7B 运行 Lagent 智能体 Demo
 ![image](https://github.com/PURE281/my_dream/assets/93171238/0ecb9ac1-fa02-42dd-a7d0-376622d325c1)
@@ -49,8 +53,5 @@
 3. ![image](https://github.com/PURE281/my_dream/assets/93171238/d9d7200b-6dfb-43f0-9121-760ec9ba45db)
 4. ![image](https://github.com/PURE281/my_dream/assets/93171238/13a34e0e-c494-464d-8a46-467a35a3e220)
 5. ![image](https://github.com/PURE281/my_dream/assets/93171238/680d7b7d-c425-47c7-ae88-5249b44032d2)
-
-
-
-
 #### 视觉问答
+1. ![image](https://github.com/PURE281/my_dream/assets/93171238/f44f6583-0f23-42fb-998b-337b33d6ec91)
