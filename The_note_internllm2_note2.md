@@ -5,13 +5,15 @@
 大致和平时的项目相同
 1. 根据指令创建python环境
 
+```
 studio-conda -o internlm-base -t demo
 # 与 studio-conda 等效的配置方案
 # conda create -n demo python==3.10 -y
 # conda activate demo
 # conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.7 -c pytorch -c nvidia
-
+```
 ![image](https://github.com/PURE281/my_dream/assets/93171238/a87a5763-31ea-4f6c-8dc6-17da29bf0c89)
+```
 pip install huggingface-hub==0.17.3
 pip install transformers==4.34 
 pip install psutil==5.9.8
@@ -20,7 +22,7 @@ pip install streamlit==1.32.2
 pip install matplotlib==3.8.3 
 pip install modelscope==1.9.5
 pip install sentencepiece==0.1.99
-
+```
 2. 通过脚本`cli_demo.py`运行demo代码
 等待运行成功界面，并输入问题
 ![image](https://github.com/PURE281/my_dream/assets/93171238/b7094c09-4eb4-48e1-b5f3-c6e8fb18ab4a)
@@ -28,10 +30,12 @@ pip install sentencepiece==0.1.99
 ![image](https://github.com/PURE281/my_dream/assets/93171238/854cfd0c-ec09-4252-a186-512da06e6ce3)
 
 3. 通过py脚本运行项目所需的模型资源
+```
 mkdir -p /root/demo
 touch /root/demo/cli_demo.py
 touch /root/demo/download_mini.py
 cd /root/demo
+```
 通过脚本`download_mini.py`下载模型所需资源
 
 4. 通过命令行运行项目
