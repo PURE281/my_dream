@@ -76,13 +76,13 @@ RAG
 ![image](https://github.com/PURE281/my_dream/assets/93171238/acbf9ba4-e275-4dd5-86f1-4c592944ed89)
 响应管道支持多来源检索：向量数据库，网络搜索结果，知识图谱；生成时也支持混合大模型（本地和远程）；通过安全检查保证生成的内容合规；也通过多重评分拒答工作流避免信息泛滥
 ![image](https://github.com/PURE281/my_dream/assets/93171238/d0b29c5e-6b53-4163-bc1b-16b1f2e21930)
-### 作业1
+### 基础作业1
 - 在茴香豆web中创建知识问答助手-进行对话
 ![image](https://github.com/PURE281/my_dream/assets/93171238/51c6c023-35d7-4615-b3e2-dcced1313bee)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/f84313f7-72bd-4dac-8759-1093507f23d2)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/a3771fe8-8a48-4be2-8068-d998e2ab3a8e)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/60222f29-7a7b-4d3c-ac37-fcf819bcb059)
-### 作业2
+### 基础作业2
 - 在internstudio搭建茴香豆助手
 创建开发机（和上次作业一样不做详细说明）
 搭建环境
@@ -214,6 +214,23 @@ python3 -m huixiangdou.main --standalone
 ![image](https://github.com/PURE281/my_dream/assets/93171238/5ccb918e-af34-41fa-9f89-41c4126ba30e)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/85a24b48-b225-4f88-9f5d-77fef80dcc21)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/594f7d15-89cb-46bc-a1b3-b6d800a90160)
+### 进阶作业 - 算法方向 尝试修改 good_questions.json、调试 prompt 或应用其他 NLP 技术，如其他 chunk 方法，提高个人工作助手的表现。
+1. 上传一份关于小学生心理健康问卷的docs文件，并打开`good_questions.json`在其中添加下图中的文本
+![image](https://github.com/PURE281/my_dream/assets/93171238/c960113c-eb04-41f2-a226-1efc05edd660)
+![image](https://github.com/PURE281/my_dream/assets/93171238/bd3935bb-850b-4c4b-8922-1932d05e5d9e)
+
+3. 在`bad_questions.json`中添加下图中的文本用于测试是否成功在拒绝管道中添加了新的向量
+![image](https://github.com/PURE281/my_dream/assets/93171238/ff04b9a9-9536-4cf0-b5f1-a00fc78c1d53)
+4. 运行脚本生成新的向量数据库
+```
+python3 -m huixiangdou.service.feature_store --sample ./test_queries.json
+```
+5. 出现的问题
+运行后还是提示error_unrelated的问题
+![image](https://github.com/PURE281/my_dream/assets/93171238/3f162cc2-c64c-479f-9a57-a8b3be43eeb7)
+但是在feature_store.log日志中有出现匹配到文档的信息
+![image](https://github.com/PURE281/my_dream/assets/93171238/612f9f91-c57c-4cb6-ade5-eb9eea4fc45a)
+晚点再看看是什么原因把....
 
 看日志+前面视频学的内容推理出大概的运行流程 
 
