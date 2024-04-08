@@ -44,3 +44,10 @@ RAG
 - 需要大量的标注数据，且对新任务的适应性较差
 
 ![image](https://github.com/PURE281/my_dream/assets/93171238/560e6027-e90b-443f-83b4-52f353ff2bf8)
+5. 评估框架和基准测试
+- 经典评估指标
+准确率（Accuracy）、召回率（Recall）、F1分数（F1 Score）、BLEU分数（用于机器翻译和文本生成）、ROUGE分数（用于文本生成的评估）
+- RAG 测评框架
+基准测试-RGB、RECALL、CRUD
+评测工具-RAGAS/ARES/TruLens
+![image](https://github.com/PURE281/my_dream/assets/93171238/d2316701-54fb-4f3f-9dd9-10bb96e018f5)
