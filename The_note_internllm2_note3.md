@@ -215,5 +215,11 @@ python3 -m huixiangdou.main --standalone
 ![image](https://github.com/PURE281/my_dream/assets/93171238/85a24b48-b225-4f88-9f5d-77fef80dcc21)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/594f7d15-89cb-46bc-a1b3-b6d800a90160)
 
+看日志+前面视频学的内容推理出大概的运行流程 
 
-
+- 获取问题，给问题添加prompt对问题进行打分
+- 添加prompt对问题进行主题获取
+- 走reject_pipeline判断是否为拒绝管道的内容，是则不回复(日志中显示的`ErrorCode.UNRELATED`
+![image](https://github.com/PURE281/my_dream/assets/93171238/dad75e13-bd4b-4ff5-ad3a-a6a9cb5deb7d)
+- 走response_pipeline管道，生成回复内容
+![image](https://github.com/PURE281/my_dream/assets/93171238/8d9d4709-40cb-408f-899b-4ff1c22e5986)
