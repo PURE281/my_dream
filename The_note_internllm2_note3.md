@@ -232,5 +232,11 @@ python3 -m huixiangdou.main --standalone
 以上内容如有不对请不吝赐教
 
 ## 思考
-- 关于模型回答`huixiangdou 是什么`的这个问题，日志中显示了top1 readme.md的字样，在该文档中确实也有huixiangdou的关键词，但是具体是怎么生成的很好奇，因为没有在项目代码中看到对应的语料库/知识库
-- 为什么要对问题进行打分，如果打分为0会出现什么情况
+- 关于模型回答`huixiangdou 是什么`的这个问题，日志中显示了top1 readme.md的字样，在该文档中确实也有huixiangdou的关键词，但是具体是怎么生成的很好奇，翻看项目代码似乎在下面的图中可以找到答案
+![image](https://github.com/PURE281/my_dream/assets/93171238/b7bf509a-9bf1-4d15-9799-02ec57f68228)
+- 为什么要对问题进行打分，翻看项目文档似乎在下面的图中已进行了说明
+![image](https://github.com/PURE281/my_dream/assets/93171238/6bb756c7-7b49-43c6-961c-fc4ad8e05008)
+- 查看`work.py`代码对项目逻辑有进一步的理解
+![image](https://github.com/PURE281/my_dream/assets/93171238/e975c8c9-8f9c-435b-abf5-c34e915b689a)
+![image](https://github.com/PURE281/my_dream/assets/93171238/290c8210-4e2c-4d63-9ae3-e5ede506f0ae)
+![image](https://github.com/PURE281/my_dream/assets/93171238/06f88405-674d-49f2-adf4-753287e975c4)
