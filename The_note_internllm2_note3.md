@@ -223,3 +223,10 @@ python3 -m huixiangdou.main --standalone
 ![image](https://github.com/PURE281/my_dream/assets/93171238/dad75e13-bd4b-4ff5-ad3a-a6a9cb5deb7d)
 - 走response_pipeline管道，生成回复内容
 ![image](https://github.com/PURE281/my_dream/assets/93171238/8d9d4709-40cb-408f-899b-4ff1c22e5986)
+
+查看/root/huixiangdou/logs下的日志文件，进一步验证了猜测
+![image](https://github.com/PURE281/my_dream/assets/93171238/a620fa66-afca-4aa0-9b52-a8f3bed77776)
+虽然问题内容得分了，但问题的内容在reject_pipeline中被筛掉了，所以不做回复的内容生成
+![image](https://github.com/PURE281/my_dream/assets/93171238/b6a7b755-2198-4436-a910-a59bee931987)
+
+以上内容如有不对请不吝赐教
