@@ -76,12 +76,13 @@ RAG
 ![image](https://github.com/PURE281/my_dream/assets/93171238/acbf9ba4-e275-4dd5-86f1-4c592944ed89)
 响应管道支持多来源检索：向量数据库，网络搜索结果，知识图谱；生成时也支持混合大模型（本地和远程）；通过安全检查保证生成的内容合规；也通过多重评分拒答工作流避免信息泛滥
 ![image](https://github.com/PURE281/my_dream/assets/93171238/d0b29c5e-6b53-4163-bc1b-16b1f2e21930)
-### 作业
+### 作业1
 - 在茴香豆web中创建知识问答助手-进行对话
 ![image](https://github.com/PURE281/my_dream/assets/93171238/51c6c023-35d7-4615-b3e2-dcced1313bee)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/f84313f7-72bd-4dac-8759-1093507f23d2)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/a3771fe8-8a48-4be2-8068-d998e2ab3a8e)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/60222f29-7a7b-4d3c-ac37-fcf819bcb059)
+### 作业2
 - 在internstudio搭建茴香豆助手
 创建开发机（和上次作业一样不做详细说明）
 搭建环境
