@@ -231,6 +231,13 @@ python3 -m huixiangdou.service.feature_store --sample ./test_queries.json
 但是在feature_store.log日志中有出现匹配到文档的信息
 ![image](https://github.com/PURE281/my_dream/assets/93171238/612f9f91-c57c-4cb6-ade5-eb9eea4fc45a)
 晚点再看看是什么原因把....
+2024.04.12更新
+- 尝试在huixiangdou/repoir文件夹下`git clone github项目地址` 然后执行命令`python3 -m huixiangdou.service.feature_store --sample ./test_queries.json`
+![image](https://github.com/PURE281/my_dream/assets/93171238/74722885-9432-4a83-a6f6-d7141cc58f3f)
+- 虽然`python3 -m huixiangdou.service.feature_store --sample ./test_queries.json`下能有返回的数据，但在`python3 -m huixiangdou.main --standalone`下还是显示error_unrelated....
+![image](https://github.com/PURE281/my_dream/assets/93171238/44d9a48d-01db-4ea5-be2b-c5dd3c3d3077)
+
+ 
 
 看日志+前面视频学的内容推理出大概的运行流程 
 
