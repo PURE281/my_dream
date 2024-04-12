@@ -214,7 +214,8 @@ python3 -m huixiangdou.main --standalone
 ![image](https://github.com/PURE281/my_dream/assets/93171238/5ccb918e-af34-41fa-9f89-41c4126ba30e)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/85a24b48-b225-4f88-9f5d-77fef80dcc21)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/594f7d15-89cb-46bc-a1b3-b6d800a90160)
-### 进阶作业 - 算法方向 尝试修改 good_questions.json、调试 prompt 或应用其他 NLP 技术，如其他 chunk 方法，提高个人工作助手的表现。
+### 进阶作业 - 算法方向 
+尝试修改 good_questions.json、调试 prompt 或应用其他 NLP 技术，如其他 chunk 方法，提高个人工作助手的表现。
 1. 上传一份关于小学生心理健康问卷的docs文件，并打开`good_questions.json`在其中添加下图中的文本
 ![image](https://github.com/PURE281/my_dream/assets/93171238/c960113c-eb04-41f2-a226-1efc05edd660)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/bd3935bb-850b-4c4b-8922-1932d05e5d9e)
