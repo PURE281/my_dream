@@ -232,11 +232,26 @@ python3 -m huixiangdou.service.feature_store --sample ./test_queries.json
 但是在feature_store.log日志中有出现匹配到文档的信息
 ![image](https://github.com/PURE281/my_dream/assets/93171238/612f9f91-c57c-4cb6-ade5-eb9eea4fc45a)
 晚点再看看是什么原因把....
+
 2024.04.12更新
 - 尝试在huixiangdou/repoir文件夹下`git clone github项目地址` 然后执行命令`python3 -m huixiangdou.service.feature_store --sample ./test_queries.json`
 ![image](https://github.com/PURE281/my_dream/assets/93171238/74722885-9432-4a83-a6f6-d7141cc58f3f)
 - 虽然`python3 -m huixiangdou.service.feature_store --sample ./test_queries.json`下能有返回的数据，但在`python3 -m huixiangdou.main --standalone`下还是显示error_unrelated....
 ![image](https://github.com/PURE281/my_dream/assets/93171238/44d9a48d-01db-4ea5-be2b-c5dd3c3d3077)
+- 在openlab中的茴香豆项目中尝试也失败了，但我重新创建了一个知识库，在该知识库中只放一个文档
+![image](https://github.com/PURE281/my_dream/assets/93171238/706d16fe-95b8-4b16-9adb-93abc01f7fca)
+发现这样是可以进行问答的
+- 于是照猫画虎试了一下将开发机中的workdir里的文件清除，将repoir里的huixiangdou项目也清除，只保留autopcr项目的内容
+- 然后重新执行`python3 -m huixiangdou.service.feature_store --sample ./test_queries.json`
+依然是该命令下能够出现相关内容
+![image](https://github.com/PURE281/my_dream/assets/93171238/ae8cfd1c-b23d-4169-a742-41aa304b462e)
+- 但在执行`python3 -m huixiangdou.main --standalone`时，依旧无法将问题识别为问题....
+![image](https://github.com/PURE281/my_dream/assets/93171238/fbc1ad50-cd6b-4e13-b641-f716ca9d1968)
+如下图，goodrequestion.json中也只剩下关于autopcr相关的正例
+![image](https://github.com/PURE281/my_dream/assets/93171238/29da0ab6-cce2-4209-a2c8-7f863f19274e)
+依旧无法正常回复.....
+
+
 
  
 
