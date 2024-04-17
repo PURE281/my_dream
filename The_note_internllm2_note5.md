@@ -44,7 +44,21 @@ InternLM2-1.8b、InternLM2-Chat-1.8b-SFT、InternLM2-Chat-1.8b
 
 ## 基础作业
 作业要求：训练自己的小助手认知（记录复现过程并截图）
+- 开发机准备
+前几个笔记皆有记录，不做描述
+由于上一个作业茴香豆问题较多，为保证内存足够，将茴香豆项目及对应的conda环境删除（绝对不是因为进阶作业没完成而闹情绪）
+![image](https://github.com/PURE281/my_dream/assets/93171238/f6e77f20-6e7b-4bfc-9846-c86feb32f730)
+删除conda环境执行```conda remove -n InternLM2-Huixiangdou --all```代码即可，剩下的茴香豆项目手动进行文件删除即可
+![image](https://github.com/PURE281/my_dream/assets/93171238/b92cf09e-0df3-40d1-8c3b-e431f900fee0)
+等待了一些时间，不过还是删除成功了（爽！）
+- i创建环境
+```
+studio-conda xtuner0.1.17
+```
+执行上面代码，一键搭建conda以及xtuner所需的portch cuda cudnn
+
 ## 进阶作业
+
 优秀学员必做
 ### 作业1
 将自我认知的模型上传到 OpenXLab，并将应用部署到 OpenXLab
