@@ -38,6 +38,64 @@ LMDeploy简介
 ## 作业
 ### 基础作业
 1. 配置 LMDeploy 运行环境
+```
+studio-conda -t lmdeploy -o pytorch-2.1.2
 
+conda activate lmdeploy
 
+pip install lmdeploy[all]==0.3.0
+```
+InternStudio开发机上下载模型（推荐）--软链接的方式
+```
+cd ~
+ln -s /root/share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b /root/
+# cp -r /root/share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b /root/
+```
 2. 以命令行方式与 InternLM2-Chat-1.8B 模型对话
+![image](https://github.com/PURE281/my_dream/assets/93171238/3113c4eb-2531-4ba1-ba78-24882691fc1a)
+
+2.1 使用Transformer库运行模型
+   在root下新建一个`pipeline_transformer.py`文件
+   复制代码
+```
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM
+
+tokenizer = AutoTokenizer.from_pretrained("/root/internlm2-chat-1_8b", trust_remote_code=True)
+
+# Set `torch_dtype=torch.float16` to load model in float16, otherwise it will be loaded as float32 and cause OOM Error.
+model = AutoModelForCausalLM.from_pretrained("/root/internlm2-chat-1_8b", torch_dtype=torch.float16, trust_remote_code=True).cuda()
+model = model.eval()
+
+inp = "hello"
+print("[INPUT]", inp)
+response, history = model.chat(tokenizer, inp, history=[])
+print("[OUTPUT]", response)
+
+inp = "please provide three suggestions about time management"
+print("[INPUT]", inp)
+response, history = model.chat(tokenizer, inp, history=history)
+print("[OUTPUT]", response)
+
+```
+然后运行 当前时间17:56分
+![image](https://github.com/PURE281/my_dream/assets/93171238/30e2fe42-4a55-4255-ab2d-106db450d8fe)
+
+等待至17:58分
+![image](https://github.com/PURE281/my_dream/assets/93171238/2688f2f2-1082-4bf9-bf4c-8e682e51ab81)
+2.2 使用LMDeploy与模型对话
+当前时间17:59
+![image](https://github.com/PURE281/my_dream/assets/93171238/069256eb-0514-4efb-97f5-f6830640b925)
+等待至18:01分
+![image](https://github.com/PURE281/my_dream/assets/93171238/7b68dd34-17a9-4b3a-a4d3-e3db2a5e903c)
+体感上来说，LMDeploy加载的时间比Transfromer快一点
+2.3 LMDeploy模型量化(lite)
+主要包括 KV8量化和W4A16量化。总的来说，量化是一种以参数或计算中间结果精度下降换空间节省（以及同时带来的性能提升）的策略。
+- 计算密集（compute-bound）: 指推理过程中，绝大部分时间消耗在数值计算上；针对计算密集型场景，可以通过使用更快的硬件计算单元来提升计算速度。
+- 访存密集（memory-bound）: 指推理过程中，绝大部分时间消耗在数据读取上；针对访存密集型场景，一般通过减少访存次数、提高计算访存比或降低访存量来优化。
+常见的 LLM 模型由于 Decoder Only 架构的特性，实际推理时大多数的时间都消耗在了逐 Token 生成阶段（Decoding 阶段），是典型的访存密集型场景。
+KV8量化是指将逐 Token（Decoding）生成过程中的上下文 K 和 V 中间结果进行 INT8 量化（计算时再反量化），以降低生成过程中的显存占用。W4A16 量化，将 FP16 的模型权重量化为 INT4，Kernel 计算时，访存量直接降为 FP16 模型的 1/4，大幅降低了访存成本。Weight Only 是指仅量化权重，数值计算依然采用 FP16（需要将 INT4 权重反量化）。
+
+### 进阶作业
+由于已过ddl，待后面有时间再完成...
+![image](https://github.com/PURE281/my_dream/assets/93171238/e3ffe843-46f9-42e8-b972-723dd2b0d821)
