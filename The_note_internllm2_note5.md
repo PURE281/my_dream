@@ -1,7 +1,7 @@
-# 书生·浦语大模型学习第二节学习笔记
-
+# 书生·浦语大模型学习第四节学习笔记
+忙半天才发现这是第四节的学习内容（捂脸）公告（两个第五节作业）发的太有迷惑性了
 ## 学习笔记
-1. Finetune简
+1. Finetune简介
 - 两种Finetune范式
 增量预训练微调
 - 使用场景：让基座模型学习到一些新知识，如某个垂直领域的常识
@@ -512,3 +512,90 @@ ssh -CNg -L 6006:127.0.0.1:6006 root@ssh.intern-ai.org.cn -p 开发机分配的�
 将自我认知的模型上传到 OpenXLab，并将应用部署到 OpenXLab
 ### 作业2
 复现多模态微调
+在基础作业的项目环境下，运行虚拟环境
+拉取项目
+```
+cd ~ && git clone https://github.com/InternLM/tutorial -b camp2 && conda activate xtuner0.1.17 && cd tutorial
+
+python /root/tutorial/xtuner/llava/llava_data/repeat.py \
+  -i /root/tutorial/xtuner/llava/llava_data/unique_data.json \
+  -o /root/tutorial/xtuner/llava/llava_data/repeated_data.json \
+  -n 200
+```
+准备配置文件
+```
+cp /root/tutorial/xtuner/llava/llava_data/internlm2_chat_1_8b_llava_tutorial_fool_config.py /root/tutorial/xtuner/llava/llava_internlm2_chat_1_8b_qlora_clip_vit_large_p14_336_lora_e1_gpu8_finetune_copy.py
+
+```
+创建配置文件
+```
+# 查询xtuner内置配置文件
+xtuner list-cfg -p llava_internlm2_chat_1_8b
+
+# 拷贝配置文件到当前目录
+xtuner copy-cfg \
+  llava_internlm2_chat_1_8b_qlora_clip_vit_large_p14_336_lora_e1_gpu8_finetune \
+  /root/tutorial/xtuner/llava
+```
+修改配置文件
+修改llava_internlm2_chat_1_8b_qlora_clip_vit_large_p14_336_lora_e1_gpu8_finetune_copy.py文件中的：
+·pretrained_pth
+·llm_name_or_path
+·visual_encoder_name_or_path
+·data_root
+·data_path
+·image_folder
+```
+# Model
+- llm_name_or_path = 'internlm/internlm2-chat-1_8b'
++ llm_name_or_path = '/root/share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b'
+- visual_encoder_name_or_path = 'openai/clip-vit-large-patch14-336'
++ visual_encoder_name_or_path = '/root/share/new_models/openai/clip-vit-large-patch14-336'
+
+# Specify the pretrained pth
+- pretrained_pth = './work_dirs/llava_internlm2_chat_1_8b_clip_vit_large_p14_336_e1_gpu8_pretrain/iter_2181.pth'  # noqa: E501
++ pretrained_pth = '/root/share/new_models/xtuner/iter_2181.pth'
+
+# Data
+- data_root = './data/llava_data/'
++ data_root = '/root/tutorial/xtuner/llava/llava_data/'
+- data_path = data_root + 'LLaVA-Instruct-150K/llava_v1_5_mix665k.json'
++ data_path = data_root + 'repeated_data.json'
+- image_folder = data_root + 'llava_images'
++ image_folder = data_root
+
+# Scheduler & Optimizer
+- batch_size = 16  # per_device
++ batch_size = 1  # per_device
+
+
+# evaluation_inputs
+- evaluation_inputs = ['请描述一下这张图片','Please describe this picture']
++ evaluation_inputs = ['Please describe this picture','What is the equipment in the image?']
+
+```
+开始Finetune
+```
+cd /root/tutorial/xtuner/llava/
+xtuner train /root/tutorial/xtuner/llava/llava_internlm2_chat_1_8b_qlora_clip_vit_large_p14_336_lora_e1_gpu8_finetune_copy.py --deepspeed deepspeed_zero2
+```
+Finetune后
+加载 1.8B 和 Fintune阶段产物 到显存。
+```
+# 解决小bug
+export MKL_SERVICE_FORCE_INTEL=1
+export MKL_THREADING_LAYER=GNU
+
+# pth转huggingface
+xtuner convert pth_to_hf \
+  /root/tutorial/xtuner/llava/llava_internlm2_chat_1_8b_qlora_clip_vit_large_p14_336_lora_e1_gpu8_finetune_copy.py \
+  /root/tutorial/xtuner/llava/work_dirs/llava_internlm2_chat_1_8b_qlora_clip_vit_large_p14_336_lora_e1_gpu8_finetune_copy/iter_1200.pth \
+  /root/tutorial/xtuner/llava/llava_data/iter_1200_hf
+
+# 启动！
+xtuner chat /root/share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b \
+  --visual-encoder /root/share/new_models/openai/clip-vit-large-patch14-336 \
+  --llava /root/tutorial/xtuner/llava/llava_data/iter_1200_hf \
+  --prompt-template internlm2_chat \
+  --image /root/tutorial/xtuner/llava/llava_data/test_img/oph.jpg
+```
