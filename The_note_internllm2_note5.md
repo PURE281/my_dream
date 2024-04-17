@@ -176,7 +176,20 @@ xtuner convert merge /root/ft/model /root/ft/huggingface /root/ft/final_model
 # 与模型进行对话
 xtuner chat /root/ft/final_model --prompt-template internlm2_chat
 ```
+测试如下
+![image](https://github.com/PURE281/my_dream/assets/93171238/834de4a2-a98f-4a18-a2ce-ab2bbfde3ca7)
+嗯？怎么好像我的比视频里训练出来的好一点，好像没有那么过拟合（开心.jpg）
+![image](https://github.com/PURE281/my_dream/assets/93171238/0998cc8f-51bd-4cd7-9188-aec2e4378af2)
+哦好吧，模型疯掉了
+试试没有微调之前的模型，看看它原本又是怎么回复的吧
+吐槽-开发机每次执行命令行的时间真的要等好久啊（抓狂.jpg）
+嗯 微调前的模型比较顺手
+![image](https://github.com/PURE281/my_dream/assets/93171238/b283d89f-b73a-49e0-8d8a-68639519da5b)
 
+使用 --adapter 参数与完整的模型进行对话
+```
+xtuner chat /root/ft/model --adapter /root/ft/huggingface --prompt-template internlm2_chat
+```
 - web 部署
 拉取前端可视化所需的项目
 ```
@@ -485,6 +498,12 @@ if __name__ == '__main__':
 ssh -CNg -L 6006:127.0.0.1:6006 root@ssh.intern-ai.org.cn -p 开发机分配的端口号
 ```
 输入密码然后访问localhost:6006即可
+又是一段漫长的等待时间....
+页面正常显示后输入进行对话
+![image](https://github.com/PURE281/my_dream/assets/93171238/42b27e19-8d35-4d93-ab06-4e802eefc164)
+微调的数据可以回答，但其他就开始答非所问了...
+![image](https://github.com/PURE281/my_dream/assets/93171238/01d014bf-73ff-4345-aabf-967d0f6a1772)
+
 
 ## 进阶作业
 
