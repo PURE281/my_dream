@@ -1,4 +1,4 @@
-![image](https://github.com/PURE281/my_dream/assets/93171238/07b9ca01-12e7-4cbe-9c95-ba50326716d9)# 书生·浦语大模型学习第二节学习笔记
+# 书生·浦语大模型学习第二节学习笔记
 
 ## 学习笔记
 1. Finetune简
