@@ -599,3 +599,5 @@ xtuner chat /root/share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b \
   --prompt-template internlm2_chat \
   --image /root/tutorial/xtuner/llava/llava_data/test_img/oph.jpg
 ```
+![image](https://github.com/PURE281/my_dream/assets/93171238/df7bcb49-6f92-4288-b40a-7701f6f38403)
+结束
