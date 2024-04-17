@@ -32,3 +32,12 @@
 
 2. LMDeploy部署
 LMDeploy简介
+涵盖了LLM任务的全套轻量化、部署和服务解决方案。核心功能包括高效推理、可靠量化、便捷服务和有状态推理
+![image](https://github.com/PURE281/my_dream/assets/93171238/740e048c-0ea1-43ab-a987-092422462d1b)
+
+## 作业
+### 基础作业
+1. 配置 LMDeploy 运行环境
+
+
+2. 以命令行方式与 InternLM2-Chat-1.8B 模型对话
