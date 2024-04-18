@@ -83,12 +83,14 @@ print("[OUTPUT]", response)
 
 等待至17:58分
 ![image](https://github.com/PURE281/my_dream/assets/93171238/2688f2f2-1082-4bf9-bf4c-8e682e51ab81)
+
 2.2 使用LMDeploy与模型对话
 当前时间17:59
 ![image](https://github.com/PURE281/my_dream/assets/93171238/069256eb-0514-4efb-97f5-f6830640b925)
 等待至18:01分
 ![image](https://github.com/PURE281/my_dream/assets/93171238/7b68dd34-17a9-4b3a-a4d3-e3db2a5e903c)
 体感上来说，LMDeploy加载的时间比Transfromer快一点
+
 2.3 LMDeploy模型量化(lite)
 主要包括 KV8量化和W4A16量化。总的来说，量化是一种以参数或计算中间结果精度下降换空间节省（以及同时带来的性能提升）的策略。
 - 计算密集（compute-bound）: 指推理过程中，绝大部分时间消耗在数值计算上；针对计算密集型场景，可以通过使用更快的硬件计算单元来提升计算速度。
