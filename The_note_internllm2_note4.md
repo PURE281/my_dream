@@ -95,6 +95,7 @@ python /root/ft/data/generate_data.py
 ```
 脚本运行后同一目录下生成了json格式的文件
 ![image](https://github.com/PURE281/my_dream/assets/93171238/2d9dfe6f-de49-448d-b6fe-729c1b4c677a)
+
 - 模型准备
 ```
 # 创建目标文件夹，确保它存在。
@@ -105,6 +106,7 @@ mkdir -p /root/ft/model
 cp -r /root/share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b/* /root/ft/model/
 ```
 ![image](https://github.com/PURE281/my_dream/assets/93171238/c33f2333-670d-4ba7-9b27-f6589bf1ce6e)
+
 - 配置文件选择
 ```
 # 列出所有内置配置文件
@@ -114,6 +116,7 @@ cp -r /root/share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b/* /root/
 xtuner list-cfg -p internlm2_1_8b
 ```
 ![image](https://github.com/PURE281/my_dream/assets/93171238/07729902-4569-4674-b41d-b7b078b45afd)
+
 - 创建配置文件
 ```
 # 创建一个存放 config 文件的文件夹
@@ -127,22 +130,29 @@ xtuner copy-cfg internlm2_1_8b_qlora_alpaca_e3 /root/ft/config
 ![image](https://github.com/PURE281/my_dream/assets/93171238/5b368f64-85b1-4700-97a5-4d413ea0dc30)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/dd7f1505-dcc6-497d-8b5c-20a8a01a0742)
 ![image](https://github.com/PURE281/my_dream/assets/93171238/e82d61ec-6af6-4cf8-b18e-0c9efb9eaf9e)
+
 - 配置文件修改
 进入上面创建的`internlm2_1_8b_qlora_alpaca_e3`配置文件,替换修改后的代码并保存
 以下是常用的超参信息
 ![image](https://github.com/PURE281/my_dream/assets/93171238/ae1ec88d-5919-4c15-9737-725d5eaedcf9)
 
 - 模型训练
+
 -- 指定保存路径
   xtuner train /root/ft/config/internlm2_1_8b_qlora_alpaca_e3_copy.py --work-dir /root/ft/train
+
 -- 模型续训
   xtuner train /root/ft/config/internlm2_1_8b_qlora_alpaca_e3_copy.py --work-dir /root/ft/train --resume /root/ft/train/iter_600.pth
+
 训练开始,又是一个漫长的等待时间...
 可以看到训练的过程中返回的一些信息
 图一![image](https://github.com/PURE281/my_dream/assets/93171238/10769a1f-f22c-4a21-9b9b-53d7d1d4a630)
+
 图二![image](https://github.com/PURE281/my_dream/assets/93171238/2b9bd1f0-5bf9-40ea-b699-db7dd2dfc0c6)
+
 图二相比图一可以看出回复的内容是有进步的
 等待的过程再接着往下看还需要做什么
+
 - 模型转换
 模型转换的本质其实就是将原本使用 Pytorch 训练出来的模型权重文件转换为目前通用的 Huggingface 格式文件，那么我们可以通过以下指令来实现一键转换。
 ```
