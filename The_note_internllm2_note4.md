@@ -196,6 +196,12 @@ xtuner chat /root/ft/final_model --prompt-template internlm2_chat
 嗯 微调前的模型比较顺手
 ![image](https://github.com/PURE281/my_dream/assets/93171238/b283d89f-b73a-49e0-8d8a-68639519da5b)
 
+--20240419更新 重新写了几条数据集，再次微调，好像过拟合的程度少了很多
+![微调](https://github.com/PURE281/my_dream/assets/93171238/e2eb5cd0-fcec-4bb8-a29f-3c1ea7beca52)
+不过过程中遇到一个问题，就是如果我的数据集太少的话（具体多少没测试，反正一开始我只仍了6条数据去微调）
+然后报错了，说value 的 end和begin不能一样 看反馈的代码位置也没看懂，后面加了个循环把数据集扩充到1w条再跑就正常了
+
+
 使用 --adapter 参数与完整的模型进行对话
 ```
 xtuner chat /root/ft/model --adapter /root/ft/huggingface --prompt-template internlm2_chat
