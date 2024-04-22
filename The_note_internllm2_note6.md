@@ -311,3 +311,11 @@ ssh -CNg -L 7860:127.0.0.1:7860 -L 23333:127.0.0.1:23333 root@ssh.intern-ai.org.
 输入 Agent name，自定义即可，图中输入了 internlm2。（如⑤所示）
 点击 save to 以保存配置，这样在下次使用时只需在第2步时选择 Agent 为 internlm2 后点击 load 以加载就可以了。（如⑥所示）
 点击 load 以加载配置。（如⑦所示）
+
+![image](https://github.com/PURE281/my_dream/assets/93171238/e1902174-d0d8-4ed9-8581-5f8820597156)
+
+然后配置工具，如下图所示。
+- 点击上方 Tools 页面进入工具配置页面。（如①所示）
+- 点击 Tools 下方框，选择 New Tool 以加载新工具。（如②所示）
+- 选择 Tool Class 为 ObjectDetection。（如③所示）
+- 点击 save 以保存配置。（如④所示）
