@@ -1,4 +1,4 @@
-# 书生·浦语大模型学习第六节学习笔记
+![image](https://github.com/PURE281/my_dream/assets/93171238/f0318b65-385c-4ccf-a9d6-aafe52a00dfb)# 书生·浦语大模型学习第六节学习笔记
 
 ## 学习笔记
 
@@ -319,3 +319,7 @@ ssh -CNg -L 7860:127.0.0.1:7860 -L 23333:127.0.0.1:23333 root@ssh.intern-ai.org.
 - 点击 Tools 下方框，选择 New Tool 以加载新工具。（如②所示）
 - 选择 Tool Class 为 ObjectDetection。（如③所示）
 - 点击 save 以保存配置。（如④所示）
+
+结果
+[Uploading image.png…]()
+嗯结果是出来了，但是为啥返回的是英文的....
