@@ -1,4 +1,4 @@
-![image](https://github.com/PURE281/my_dream/assets/93171238/f0318b65-385c-4ccf-a9d6-aafe52a00dfb)# 书生·浦语大模型学习第六节学习笔记
+# 书生·浦语大模型学习第六节学习笔记
 
 ## 学习笔记
 
@@ -321,5 +321,110 @@ ssh -CNg -L 7860:127.0.0.1:7860 -L 23333:127.0.0.1:23333 root@ssh.intern-ai.org.
 - 点击 save 以保存配置。（如④所示）
 
 结果
-[Uploading image.png…]()
+![image](https://github.com/PURE281/my_dream/assets/93171238/f0318b65-385c-4ccf-a9d6-aafe52a00dfb)
+
 嗯结果是出来了，但是为啥返回的是英文的....
+
+2.3 用 AgentLego 自定义工具
+- 继承 BaseTool 类
+- 修改 default_desc 属性（工具功能描述）
+- 如有需要，重载 setup 方法（重型模块延迟加载）
+- 重载 apply 方法（工具功能实现）
+
+2.3.1 创建工具文件
+```
+touch /root/agent/agentlego/agentlego/tools/magicmaker_image_generation.py
+```
+```
+import json
+import requests
+
+import numpy as np
+
+from agentlego.types import Annotated, ImageIO, Info
+from agentlego.utils import require
+from .base import BaseTool
+
+
+class MagicMakerImageGeneration(BaseTool):
+
+    default_desc = ('This tool can call the api of magicmaker to '
+                    'generate an image according to the given keywords.')
+
+    styles_option = [
+        'dongman',  # 动漫
+        'guofeng',  # 国风
+        'xieshi',   # 写实
+        'youhua',   # 油画
+        'manghe',   # 盲盒
+    ]
+    aspect_ratio_options = [
+        '16:9', '4:3', '3:2', '1:1',
+        '2:3', '3:4', '9:16'
+    ]
+
+    @require('opencv-python')
+    def __init__(self,
+                 style='guofeng',
+                 aspect_ratio='4:3'):
+        super().__init__()
+        if style in self.styles_option:
+            self.style = style
+        else:
+            raise ValueError(f'The style must be one of {self.styles_option}')
+        
+        if aspect_ratio in self.aspect_ratio_options:
+            self.aspect_ratio = aspect_ratio
+        else:
+            raise ValueError(f'The aspect ratio must be one of {aspect_ratio}')
+
+    def apply(self,
+              keywords: Annotated[str,
+                                  Info('A series of Chinese keywords separated by comma.')]
+        ) -> ImageIO:
+        import cv2
+        response = requests.post(
+            url='https://magicmaker.openxlab.org.cn/gw/edit-anything/api/v1/bff/sd/generate',
+            data=json.dumps({
+                "official": True,
+                "prompt": keywords,
+                "style": self.style,
+                "poseT": False,
+                "aspectRatio": self.aspect_ratio
+            }),
+            headers={'content-type': 'application/json'}
+        )
+        image_url = response.json()['data']['imgUrl']
+        image_response = requests.get(image_url)
+        image = cv2.imdecode(np.frombuffer(image_response.content, np.uint8), cv2.IMREAD_COLOR)
+        return ImageIO(image)
+```
+
+2.3.2 注册新工具
+接下来修改 /root/agent/agentlego/agentlego/tools/__init__.py 文件，将我们的工具注册在工具列表中。如下所示，我们将 MagicMakerImageGeneration 通过 from .magicmaker_image_generation import MagicMakerImageGeneration 导入到了文件中，并且将其加入了 __all__ 列表中。
+![image](https://github.com/PURE281/my_dream/assets/93171238/d7c50ace-ad62-4bc9-be24-6c0107ce1bf8)
+
+2.3.3 体验自定义工具效果
+```
+conda activate agent
+lmdeploy serve api_server /root/share/new_models/Shanghai_AI_Laboratory/internlm2-chat-7b \
+                            --server-name 127.0.0.1 \
+                            --model-name internlm2-chat-7b \
+                            --cache-max-entry-count 0.1
+```
+```
+conda activate agent
+cd /root/agent/agentlego/webui
+python one_click.py
+```
+```
+ssh -CNg -L 7860:127.0.0.1:7860 -L 23333:127.0.0.1:23333 root@ssh.intern-ai.org.cn -p 你的 ssh 端口号
+
+```
+
+以上都运行成功后选择tools里的MagicMakerImageGeneration 然后保存调用
+![image](https://github.com/PURE281/my_dream/assets/93171238/b64a2e5c-ad29-4f1e-aa3c-689a30d681ee)
+
+结果
+![image](https://github.com/PURE281/my_dream/assets/93171238/c05b82a1-5b00-42a6-a178-5ec399edb267)
+后台没有输出什么日志，所以就不截图了
