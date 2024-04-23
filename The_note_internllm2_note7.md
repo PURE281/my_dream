@@ -36,6 +36,7 @@ git clone -b 0.2.4 https://github.com/open-compass/opencompass
 cd opencompass
 pip install -e .
 ```
+
 亲测`pip install -e .`安装提示成功了,但是还是无法运行`python tools/list_configs.py internlm ceval`指令
 ![image](https://github.com/PURE281/my_dream/assets/93171238/2625f6bf-ac9b-4665-bff5-dbddbb02f3d4)
 
@@ -60,4 +61,6 @@ python run.py --datasets ceval_gen --hf-path /share/new_models/Shanghai_AI_Labor
 
 解决方案`pip install protobuf` `export MKL_SERVICE_FORCE_INTEL=1`
 执行上面命令后再次执行启动评测的代码
+![image](https://github.com/PURE281/my_dream/assets/93171238/038e2db0-3197-4153-9bcf-4d8c25498e5e)
 
+![image](https://github.com/PURE281/my_dream/assets/93171238/d23074e6-3711-47e7-bcf5-1b37db925b39)
