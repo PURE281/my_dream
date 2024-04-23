@@ -24,3 +24,40 @@
 ![image](https://github.com/PURE281/my_dream/assets/93171238/8e0e09dd-6ece-4eda-9700-63939d04427a)
 
 ## 基础作业
+使用 OpenCompass 评测 internlm2-chat-1_8b 模型在 C-Eval 数据集上的性能
+### 搭建环境
+开发机 
+cuda 11.7 10%A100
+python环境
+```
+studio-conda -o internlm-base -t opencompass
+source activate opencompass
+git clone -b 0.2.4 https://github.com/open-compass/opencompass
+cd opencompass
+pip install -e .
+```
+亲测`pip install -e .`安装提示成功了,但是还是无法运行`python tools/list_configs.py internlm ceval`指令
+![image](https://github.com/PURE281/my_dream/assets/93171238/2625f6bf-ac9b-4665-bff5-dbddbb02f3d4)
+
+因此使用原始的`pip install -r requirements.txt`
+### 数据集准备
+复制数据集至opencompass文件夹中并解压
+```
+cp /share/temp/datasets/OpenCompassData-core-20231110.zip /root/opencompass/
+unzip OpenCompassData-core-20231110.zip
+```
+### 查看支持的数据集和模型
+```
+python tools/list_configs.py internlm ceval
+```
+![image](https://github.com/PURE281/my_dream/assets/93171238/df42aac2-9fd7-43f1-8286-fd8cfc57b414)
+### 启动评测 (10% A100 8GB 资源)
+```
+python run.py --datasets ceval_gen --hf-path /share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b --tokenizer-path /share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b --tokenizer-kwargs padding_side='left' truncation='left' trust_remote_code=True --model-kwargs trust_remote_code=True device_map='auto' --max-seq-len 1024 --max-out-len 16 --batch-size 2 --num-gpus 1 --debug
+```
+异常
+![image](https://github.com/PURE281/my_dream/assets/93171238/e6308fa0-4a94-4b8f-a723-791564771478)
+
+解决方案`pip install protobuf` `export MKL_SERVICE_FORCE_INTEL=1`
+执行上面命令后再次执行启动评测的代码
+
