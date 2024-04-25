@@ -89,13 +89,32 @@ python tools/list_configs.py internlm ceval
 ```
 ![image](https://github.com/PURE281/my_dream/assets/93171238/df42aac2-9fd7-43f1-8286-fd8cfc57b414)
 ### 启动评测 (10% A100 8GB 资源)
+确保按照上述步骤正确安装 OpenCompass 并准备好数据集后，可以通过以下命令评测 InternLM2-Chat-1.8B 模型在 C-Eval 数据集上的性能。由于 OpenCompass 默认并行启动评估过程，我们可以在第一次运行时以 --debug 模式启动评估，并检查是否存在问题。在 --debug 模式下，任务将按顺序执行，并实时打印输出。
 ```
 python run.py --datasets ceval_gen --hf-path /share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b --tokenizer-path /share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b --tokenizer-kwargs padding_side='left' truncation='left' trust_remote_code=True --model-kwargs trust_remote_code=True device_map='auto' --max-seq-len 1024 --max-out-len 16 --batch-size 2 --num-gpus 1 --debug
+```
+命令解析
+```
+python run.py
+--datasets ceval_gen \
+--hf-path /share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b \  # HuggingFace 模型路径
+--tokenizer-path /share/new_models/Shanghai_AI_Laboratory/internlm2-chat-1_8b \  # HuggingFace tokenizer 路径（如果与模型路径相同，可以省略）
+--tokenizer-kwargs padding_side='left' truncation='left' trust_remote_code=True \  # 构建 tokenizer 的参数
+--model-kwargs device_map='auto' trust_remote_code=True \  # 构建模型的参数
+--max-seq-len 1024 \  # 模型可以接受的最大序列长度
+--max-out-len 16 \  # 生成的最大 token 数
+--batch-size 2  \  # 批量大小
+--num-gpus 1  # 运行模型所需的 GPU 数量
+--debug
 ```
 异常
 ![image](https://github.com/PURE281/my_dream/assets/93171238/e6308fa0-4a94-4b8f-a723-791564771478)
 
-解决方案`pip install protobuf` `export MKL_SERVICE_FORCE_INTEL=1`
+解决方案
+`pip install protobuf` 
+`export MKL_SERVICE_FORCE_INTEL=1
+#或
+export MKL_THREADING_LAYER=GNU`
 执行上面命令后再次执行启动评测的代码
 ![image](https://github.com/PURE281/my_dream/assets/93171238/038e2db0-3197-4153-9bcf-4d8c25498e5e)
 
