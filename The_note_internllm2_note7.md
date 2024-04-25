@@ -61,6 +61,15 @@
 
 ## 基础作业
 使用 OpenCompass 评测 internlm2-chat-1_8b 模型在 C-Eval 数据集上的性能
+
+opencompass执行逻辑
+- 对数据，模型进行分片处理opencompass/opencompass/partitioners
+- 分片完成以后变成一个个的任务opencompass/opencompass/tasks
+- 不同任务的提交方式opencompass/opencompass/runners
+- 每一个任务的执行opencompass/opencompass/openicl
+- 执行完成以后如何进行汇总opencompass/opencompass/summarizers
+
+
 ### 搭建环境
 开发机 
 cuda 11.7 10%A100
