@@ -608,6 +608,12 @@ if __name__ == '__main__':
 ssh -CNg -L 6006:127.0.0.1:6006 root@ssh.intern-ai.org.cn -p 开发机分配的端口号
 ```
 输入密码然后访问localhost:6006即可
+
+之后我们需要输入以下命令运行 /root/personal_assistant/code/InternLM 目录下的 web_demo.py 文件。
+```
+streamlit run /root/ft/web_demo/InternLM/chat/web_demo.py --server.address 127.0.0.1 --server.port 6006
+```
+
 又是一段漫长的等待时间....
 页面正常显示后输入进行对话
 ![image](https://github.com/PURE281/my_dream/assets/93171238/42b27e19-8d35-4d93-ab06-4e802eefc164)
