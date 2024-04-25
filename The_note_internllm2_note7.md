@@ -24,8 +24,10 @@
 ### 模型评测标准
 模型分类：基座模型、对话模型、公开权重的开源模型、API模型
 ![image](https://github.com/PURE281/my_dream/assets/93171238/ea689b72-9b10-4ef9-ab00-c009624be469)
+
 客观评测与主观测评
 客观问答题、客观选择题以及开放式主观问答
+
 ![image](https://github.com/PURE281/my_dream/assets/93171238/e5732748-1314-4331-ade9-39b7b85d346f)
 提示词工程
 明确性、概念无歧义、逐步引导、具体描述、迭代反馈
